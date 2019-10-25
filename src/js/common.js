@@ -1,9 +1,9 @@
 import toolbarSwich from '../html/toolbar.html';
-import menuItemsTemplate from '../templates/templateitems.html';
+import menuItemsTemplate from '../templates/templateitems.hbs';
 import dataMenuList from '../json/menu.json';
 
 //constants section
-const Handlebars = require("handlebars");
+// const Handlebars = require("handlebars");
 const toolBar = document.querySelector('.toolbar');
 toolBar.insertAdjacentHTML('afterbegin', toolbarSwich);
 const toolbarDom = document.querySelector('#theme-switch-control');
@@ -16,8 +16,9 @@ const menuItems = document.querySelector('#menu');
 let currentTheme = localStorage.getItem('Theme', body.className);
 
 //Using Handlebars to compile template and parse items list trough func in to the DOM
-const dataMenu = Handlebars.compile(menuItemsTemplate);
-menuItems.insertAdjacentHTML('afterbegin', dataMenu(dataMenuList));
+// const dataMenu = Handlebars.compile(menuItemsTemplate);
+// menuItems.insertAdjacentHTML('afterbegin', dataMenu(dataMenuList));
+menuItems.insertAdjacentHTML('afterbegin', menuItemsTemplate(dataMenuList));
 
 //Checking exists theme and check box condition
 if (!currentTheme) {
